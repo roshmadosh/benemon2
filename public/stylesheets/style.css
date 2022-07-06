@@ -1,0 +1,138 @@
+main {
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+}
+
+.pages > div:nth-child(4), .pages > div:nth-child(3), .pages > div:nth-child(2), .pages > div:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pages > div:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pages > div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pages > div:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.pages > div:nth-child(4) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.pages > div:nth-child(4), .pages > div:nth-child(3), .pages > div:nth-child(2), .pages > div:nth-child(1) {
+  width: 50%;
+  height: 50%;
+  cursor: pointer;
+}
+
+.close:hover, .page:hover > span {
+  cursor: pointer;
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.logo {
+  background: #222;
+  width: clamp(16rem, 11.96vw + 12.114rem, 30rem);
+  position: absolute;
+  z-index: 2;
+  transform: translateX(calc(50vw - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2)) translateY(calc(50vh - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2 * 0.52));
+}
+
+.logo.page-view {
+  transform: scaleX(0.5) scaleY(0.5);
+}
+
+.page-title {
+  position: relative;
+  color: #222;
+  font-size: 4.8rem;
+  font-weight: 200;
+  font-family: "Oswald", sans-serif;
+  opacity: 1;
+  pointer-events: none;
+  z-index: -200;
+}
+
+.page.top.left.active ~ .page.top.right > span,
+.page.top.left.active ~ .page.bottom.right > span {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.page.top.left.active ~ .page.bottom.left > span {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.page.top.right.active ~ .page.bottom.left > span,
+.page.top.right.active ~ .page.bottom.right > span {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.page.top.right.active .page.top.left > span {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.close {
+  color: red;
+  font-size: 6.4rem;
+  font-family: "Dokdo", cursive;
+  font-weight: 400;
+  position: absolute;
+  top: 2vw;
+  right: 5vw;
+  z-index: 2;
+  opacity: 1;
+}
+
+.close.hidden {
+  opacity: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.25s;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  background: #eee;
+}
+
+main {
+  max-width: 149.6rem;
+  min-height: 100vh;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

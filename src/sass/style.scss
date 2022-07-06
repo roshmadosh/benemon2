@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+@import './variables/_variables_dir';
+@import './mixins/_mixins_dir';
+@import './components/_components_dir';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .25s;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  background: $bg-color;
+}
+
+main {
+  max-width: 149.6rem;
+  min-height: 100vh;
+    @extend %x-center;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}

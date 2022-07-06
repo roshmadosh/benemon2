@@ -1,0 +1,19 @@
+.close {
+  color: red;
+  font-size: $fs-400;
+  font-family: $ff-cross;
+  font-weight: 400;
+  position: absolute;
+  top: 2vw;
+  right: 5vw;
+  z-index: 2;
+  opacity: 1;
+}
+
+.close.hidden {
+  opacity: 0;
+}
+
+.close:hover {
+  @extend %hover;
+}
