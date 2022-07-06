@@ -2,3 +2,9 @@
   cursor: pointer;
   transform: scaleX(1.1) scaleY(1.1);
 }
+
+%page-active {
+  z-index: 0;
+  grid-column: 1 / -1;
+  grid-row: 1 / span 999;
+}

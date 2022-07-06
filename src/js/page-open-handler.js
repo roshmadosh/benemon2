@@ -7,6 +7,8 @@ pages.forEach(page => {
 })
 closeBtn.addEventListener('click', () => closeClickHandler());
 
+
+
 function pageClickHandler(activePage) {
   pages.forEach(page => removeClass(page, 'active'));
   addClass(activePage, 'active');

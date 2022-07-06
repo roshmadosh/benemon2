@@ -9,21 +9,25 @@
   padding: 0;
   box-sizing: border-box;
   transition: all .25s;
+  overflow: hidden;
 }
 
 html {
   font-size: 62.5%;
+
 }
 
 body {
   width: 100%;
   background: $bg-color;
+
 }
 
 main {
-  max-width: 149.6rem;
+  position: relative;
+  max-width: $viewport-max;
   min-height: 100vh;
-    @extend %x-center;
+  @extend %x-center;
 }
 
 ul, ol {

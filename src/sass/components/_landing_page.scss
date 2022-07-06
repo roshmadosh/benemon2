@@ -1,71 +1,131 @@
+// --- [LABELS] --- //
+.labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50vh 50vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.page-label {
+  @extend %page-label;
+ }
+
+// -- [LOGO] -- //
 .logo {
   background: #222;
   width: $logo-width;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   transform: 
-    translateX(calc(50vw - math.div($logo-width, 2))) 
+    translateX(calc(min(50vw, math.div($viewport-max, 2)) - math.div($logo-width, 2))) 
     translateY(calc(50vh - math.div($logo-width, 2) * $logo-aspect-ratio));
 }
 
 .logo.page-view {
+  background: #eee;
   transform: 
-    scaleX(.5)
-    scaleY(.5);
+    scaleX(.75)
+    scaleY(.75);
 }
 
-.page-title {
-  position: relative;
-  color: #222;
-  font-size: $fs-400 * .75;
-  font-weight: 200;
-  font-family: $ff-headings;
-  opacity: 1;
-  pointer-events: none;
-  z-index: -200;
+// --- [PAGES] --- //
+.pages {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.page:hover > span {
-    @extend %hover;
+.page {
+  @extend %page-btn;
 }
 
-// -- ACTIVE (top-left) -- //
-.page.top.left.active ~ .page.top.right > span,
-.page.top.left.active ~ .page.bottom.right > span {
+// --- [PAGE: CLICK] --- //
+// top-left
+.page.top.left.active {
+ @extend %page-active;
+}
+.page.top.left.active ~ .labels > .page-label.top.right ,
+.page.top.left.active ~ .labels > .page-label.bottom.right {
   transform: translateX(100%);
   opacity: 0;
 }
-.page.top.left.active ~ .page.bottom.left > span {
+.page.top.left.active ~ .labels > .page-label.bottom.left {
   transform: translateY(100%);
   opacity: 0;
 }
-// -- ACTIVE (top-right) -- //
-.page.top.right.active ~ .page.bottom.left > span,
-.page.top.right.active ~ .page.bottom.right > span {
-  transform: translateY(100%);
-  opacity: 0;
+// top-right
+.page.top.right.active {
+ @extend %page-active;
 }
-.page.top.right.active .page.top.left > span {
+.page.top.right.active ~ .labels > .page-label.top.left ,
+.page.top.right.active ~ .labels > .page-label.bottom.left {
   transform: translateX(-100%);
   opacity: 0;
 }
-// -- ACTIVE (bottom-left) -- //
-// -- ACTIVE (bottom-right) -- //
+.page.top.right.active ~ .labels > .page-label.bottom.right {
+  transform: translateY(100%);
+  opacity: 0;
+}
+//bottom-left
+.page.bottom.left.active {
+ @extend %page-active;
+}
+.page.bottom.left.active ~ .labels > .page-label.top.left ,
+.page.bottom.left.active ~ .labels > .page-label.top.right {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.page.bottom.left.active ~ .labels > .page-label.bottom.right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+//bottom-right
+.page.bottom.right.active {
+ @extend %page-active;
+}
+.page.bottom.right.active ~ .labels > .page-label.top.left ,
+.page.bottom.right.active ~ .labels > .page-label.bottom.left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.page.bottom.right.active ~ .labels > .page-label.top.right {
+  transform: translateY(-100%);
+  opacity: 0;
+}
 
-
-.pages > div:nth-child(1) {
-  @extend %page-btn;
-  @extend %top-left;
+// --- [PAGE: HOVER] --- //
+// .page.top.left:hover {
+//   background: rgb(203, 108, 108, 0.8);
+// }
+// .page.top.right:hover {
+//   background: rgb(203, 108, 108, 0.8);
+// }
+// .page.bottom.left:hover {
+//   background: rgb(203, 108, 108, 0.8);
+// }
+// .page.bottom.right:hover {
+//   background: rgb(203, 108, 108, 0.8);
+// }
+.page.top.left:hover ~ .labels .page-label.top.left {
+  @extend %hover;
+  background: red;
 }
-.pages > div:nth-child(2) {
-  @extend %page-btn;
-  @extend %top-right;
+.page.top.right:hover ~ .labels .page-label.top.right {
+  @extend %hover;
+  background: red;
 }
-.pages > div:nth-child(3) {
-  @extend %page-btn;
-  @extend %bottom-left;
+.page.bottom.left:hover ~ .labels .page-label.bottom.left {
+  @extend %hover;
+  background: red;
 }
-.pages > div:nth-child(4) {
-  @extend %page-btn;
-  @extend %bottom-right;
+.page.bottom.right:hover ~ .labels .page-label.bottom.right {
+  @extend %hover;
+  background: red;
 }

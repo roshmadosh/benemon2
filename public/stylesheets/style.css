@@ -4,90 +4,125 @@ main {
   margin: 0 auto;
 }
 
-.pages > div:nth-child(4), .pages > div:nth-child(3), .pages > div:nth-child(2), .pages > div:nth-child(1) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pages > div:nth-child(1) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.pages > div:nth-child(2) {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.pages > div:nth-child(3) {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.pages > div:nth-child(4) {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.pages > div:nth-child(4), .pages > div:nth-child(3), .pages > div:nth-child(2), .pages > div:nth-child(1) {
-  width: 50%;
-  height: 50%;
+.page {
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-}
-
-.close:hover, .page:hover > span {
-  cursor: pointer;
-  transform: scaleX(1.1) scaleY(1.1);
-}
-
-.logo {
-  background: #222;
-  width: clamp(16rem, 11.96vw + 12.114rem, 30rem);
-  position: absolute;
   z-index: 2;
-  transform: translateX(calc(50vw - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2)) translateY(calc(50vh - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2 * 0.52));
 }
 
-.logo.page-view {
-  transform: scaleX(0.5) scaleY(0.5);
-}
-
-.page-title {
-  position: relative;
+.page-label {
   color: #222;
   font-size: 4.8rem;
   font-weight: 200;
   font-family: "Oswald", sans-serif;
   opacity: 1;
   pointer-events: none;
-  z-index: -200;
+  z-index: 3;
 }
 
-.page.top.left.active ~ .page.top.right > span,
-.page.top.left.active ~ .page.bottom.right > span {
+.close:hover, .page.bottom.right:hover ~ .labels .page-label.bottom.right, .page.bottom.left:hover ~ .labels .page-label.bottom.left, .page.top.right:hover ~ .labels .page-label.top.right, .page.top.left:hover ~ .labels .page-label.top.left {
+  cursor: pointer;
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.page.bottom.right.active, .page.bottom.left.active, .page.top.right.active, .page.top.left.active {
+  z-index: 0;
+  grid-column: 1/-1;
+  grid-row: 1/span 999;
+}
+
+.labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50vh 50vh;
+  justify-items: center;
+  align-items: center;
+}
+
+.logo {
+  background: #222;
+  width: clamp(16rem, 11.96vw + 12.114rem, 30rem);
+  position: absolute;
+  z-index: 3;
+  transform: translateX(calc(min(50vw, 74.8rem) - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2)) translateY(calc(50vh - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2 * 0.52));
+}
+
+.logo.page-view {
+  background: #eee;
+  transform: scaleX(0.75) scaleY(0.75);
+}
+
+.pages {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.page.top.left.active ~ .labels > .page-label.top.right,
+.page.top.left.active ~ .labels > .page-label.bottom.right {
   transform: translateX(100%);
   opacity: 0;
 }
 
-.page.top.left.active ~ .page.bottom.left > span {
+.page.top.left.active ~ .labels > .page-label.bottom.left {
   transform: translateY(100%);
   opacity: 0;
 }
 
-.page.top.right.active ~ .page.bottom.left > span,
-.page.top.right.active ~ .page.bottom.right > span {
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.page.top.right.active .page.top.left > span {
+.page.top.right.active ~ .labels > .page-label.top.left,
+.page.top.right.active ~ .labels > .page-label.bottom.left {
   transform: translateX(-100%);
   opacity: 0;
+}
+
+.page.top.right.active ~ .labels > .page-label.bottom.right {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.page.bottom.left.active ~ .labels > .page-label.top.left,
+.page.bottom.left.active ~ .labels > .page-label.top.right {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.page.bottom.left.active ~ .labels > .page-label.bottom.right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.page.bottom.right.active ~ .labels > .page-label.top.left,
+.page.bottom.right.active ~ .labels > .page-label.bottom.left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.page.bottom.right.active ~ .labels > .page-label.top.right {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.page.top.left:hover ~ .labels .page-label.top.left {
+  background: red;
+}
+
+.page.top.right:hover ~ .labels .page-label.top.right {
+  background: red;
+}
+
+.page.bottom.left:hover ~ .labels .page-label.bottom.left {
+  background: red;
+}
+
+.page.bottom.right:hover ~ .labels .page-label.bottom.right {
+  background: red;
 }
 
 .close {
@@ -98,7 +133,7 @@ main {
   position: absolute;
   top: 2vw;
   right: 5vw;
-  z-index: 2;
+  z-index: 3;
   opacity: 1;
 }
 
@@ -111,6 +146,7 @@ main {
   padding: 0;
   box-sizing: border-box;
   transition: all 0.25s;
+  overflow: hidden;
 }
 
 html {
@@ -123,6 +159,7 @@ body {
 }
 
 main {
+  position: relative;
   max-width: 149.6rem;
   min-height: 100vh;
 }
