@@ -9,7 +9,6 @@
   padding: 0;
   box-sizing: border-box;
   transition: all .4s;
-  overflow: hidden;
 }
 
 html {
@@ -28,6 +27,7 @@ main {
   max-width: $viewport-max;
   height: 100vh;
   @extend %x-center;
+  @extend %overflow-hidden;
 }
 
 ul, ol {

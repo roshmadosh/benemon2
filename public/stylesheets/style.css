@@ -75,6 +75,10 @@ main {
   opacity: 0;
 }
 
+main.of-hidden {
+  overflow: hidden;
+}
+
 .logo {
   background: #222;
   width: clamp(16rem, 11.96vw + 12.114rem, 30rem);
@@ -140,15 +144,17 @@ main {
 #menu {
   position: absolute;
   left: 0;
-  top: 50vh;
+  top: 40vh;
   left: 5%;
   width: 90%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  border: 0.2rem solid #222;
-  justify-self: first baseline;
+  border: 0.2rem solid black;
+}
+
+#menu.hidden {
+  transform: translateY(10%);
 }
 
 .close {
@@ -173,7 +179,6 @@ main {
   padding: 0;
   box-sizing: border-box;
   transition: all 0.4s;
-  overflow: hidden;
 }
 
 html {

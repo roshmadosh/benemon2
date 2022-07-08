@@ -17,8 +17,10 @@
 %hidden {
   pointer-events: none;
   opacity: 0;
-  // & * {
-  //   pointer-events: none;
-  //   opacity: 0;
-  // }
+}
+
+%overflow-hidden {
+  &.of-hidden {
+    overflow: hidden;
+  }
 }

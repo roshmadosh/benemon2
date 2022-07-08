@@ -23,18 +23,17 @@
 #menu {
   position: absolute;
   left: 0;
-  top: 50vh;
+  top: 40vh;
   left: 5%;
   width: 90%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  border: .2rem solid #222;
-  justify-self: first baseline;
+  border: .2rem solid black;
 }
 
 #menu.hidden {
   @extend %hidden;
+  transform: translateY(10%);
 }
 
