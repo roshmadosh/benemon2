@@ -26,7 +26,6 @@ main {
   width: 50%;
   height: 50%;
   position: relative;
-  z-index: 3;
   text-align: center;
 }
 
@@ -44,17 +43,25 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.close:hover, .page.bottom.right:hover > span, .page.bottom.left:hover > span, .page.top.right:hover > span, .page.top.left:hover > span {
+.menu-option-label {
+  font-size: 2.4rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 200;
+  text-decoration: none;
+  color: #222;
+  padding: 0.5em 1em;
   cursor: pointer;
 }
+.active.menu-option-label {
+  text-decoration: underline;
+}
 
-.page.bottom.right:hover > span, .page.bottom.left:hover > span, .page.top.right:hover > span, .page.top.left:hover > span {
+.page.bottom.right:hover > span.hover-effect, .page.bottom.left:hover > span.hover-effect, .page.top.right:hover > span.hover-effect, .page.top.left:hover > span.hover-effect {
   background: #222;
   color: #eee;
 }
 
 .page.bottom.right.active, .page.bottom.left.active, .page.top.right.active, .page.top.left.active {
-  pointer-events: none;
   width: 100%;
   height: 100%;
 }
@@ -63,7 +70,7 @@ main {
   pointer-events: none;
 }
 
-.page.bottom.right.inactive, .page.bottom.left.inactive, .page.top.right.inactive, .page.top.left.inactive {
+#menu.hidden, #menu-options.hidden, .page.bottom.right.inactive, .page.bottom.left.inactive, .page.top.right.inactive, .page.top.left.inactive {
   pointer-events: none;
   opacity: 0;
 }
@@ -77,28 +84,13 @@ main {
 }
 
 .logo.page-view {
-  transform: translateX(calc(min(50vw, 74.8rem) - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2)) scaleX(0.75) scaleY(0.75);
+  transform: scaleX(0.75) scaleY(0.75);
 }
 
 .pages {
   width: 100%;
   height: 100vh;
-}
-
-.page.top.left:hover > span {
-  transform: translate(-50%, -50%);
-}
-
-.page.top.right:hover > span {
-  transform: translate(-50%, -50%);
-}
-
-.page.bottom.left:hover > span {
-  transform: translate(-50%, -50%);
-}
-
-.page.bottom.right:hover > span {
-  transform: translate(-50%, -50%);
+  z-index: -1;
 }
 
 .fade-up > span {
@@ -133,6 +125,32 @@ main {
   transform: translate(200%, 200%) !important;
 }
 
+#menu-options {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  top: 30vh;
+}
+
+#menu-options.hidden {
+  transform: translateX(400%);
+}
+
+#menu {
+  position: absolute;
+  left: 0;
+  top: 50vh;
+  left: 5%;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  border: 0.2rem solid #222;
+  justify-self: first baseline;
+}
+
 .close {
   color: red;
   font-size: 6.4rem;
@@ -143,6 +161,7 @@ main {
   right: 5vw;
   z-index: 3;
   opacity: 1;
+  cursor: pointer;
 }
 
 .close.hidden {
@@ -169,7 +188,7 @@ body {
 main {
   position: relative;
   max-width: 149.6rem;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 ul, ol {

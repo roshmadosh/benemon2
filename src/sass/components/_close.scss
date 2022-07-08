@@ -8,12 +8,9 @@
   right: 5vw;
   z-index: 3;
   opacity: 1;
+  cursor: pointer;
 }
 
 .close.hidden {
   opacity: 0;
-}
-
-.close:hover {
-  @extend %hover;
 }

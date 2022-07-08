@@ -1,14 +1,20 @@
 const pages = Array.from(document.querySelectorAll('.page'));
-const pageLabels = Array.from(document.querySelectorAll('.page-label'))
+const pageLabels = Array.from(document.querySelectorAll('.page-label'));
 const logo = document.querySelector('.logo');
 const closeBtn = document.querySelector('.close');
+const menuOptionsContainer = document.querySelector('#menu-options');
+const menuOptions = Array.from(menuOptionsContainer.children);
+const menuOptionLabels = menuOptions.map(option => option.children[0]);
 
 pageLabels.forEach((label, index) => {
-  label.addEventListener('click', (e) => pageClickHandler(index));
-})
-closeBtn.addEventListener('click', () => closeClickHandler());
+  label.addEventListener('click', () => pageClickHandler(index));
+});
 
+menuOptions.forEach(option => {
+  option.addEventListener('click', (e) => optionClickHandler(e.target));
+});
 
+closeBtn.addEventListener('click', closeClickHandler);
 
 function pageClickHandler(activeIndex) {
   const activePage = pages[activeIndex];
@@ -24,6 +30,7 @@ function pageClickHandler(activeIndex) {
       addClass(inactives[0], ['fade-left', 'inactive']);
       addClass(inactives[2], ['fade-down', 'inactive']);
       addClass(inactives[1], ['fade-left', 'fade-down', 'inactive']);
+      removeClass(menuOptionsContainer, 'hidden');
     break;
     case 2:
       addClass(inactives[0], ['fade-up', 'inactive']);
@@ -40,6 +47,12 @@ function pageClickHandler(activeIndex) {
   addClass(activePage, 'active');
   addClass(logo, 'page-view');
   removeClass(closeBtn, 'hidden');
+  removeClassFromAll(pageLabels, 'hover-effect');
+}
+
+function optionClickHandler(activeOption) {
+  removeClassFromAll(menuOptionLabels, 'active');
+  addClass(activeOption, 'active');
 }
 
 function closeClickHandler() {
@@ -49,6 +62,8 @@ function closeClickHandler() {
   });
 
   addClass(closeBtn, 'hidden');
+  addClass(menuOptionsContainer, 'hidden');
+  addClassToAll(pageLabels, 'hover-effect');
   removeClass(logo, 'page-view');
 }
 
@@ -67,4 +82,16 @@ function removeClass(element, className) {
   } else {
     element.classList.remove(...className);
   }
+}
+
+function addClassToAll(array, className) {
+  array.forEach(item => {
+    addClass(item, className);
+  });
+}
+
+function removeClassFromAll(array ,className) {
+  array.forEach(item => {
+    removeClass(item, className);
+  });
 }

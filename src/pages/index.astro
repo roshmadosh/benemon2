@@ -1,5 +1,6 @@
 ---
-
+import Menu from "../components/Menu.astro";
+import MenuOptions from "../components/MenuOptions.astro";
 ---
 <html lang="en">
 	<head>
@@ -9,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dokdo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/style.css">
 		<title>Benemon</title>
     <script src="../js/page-open-handler.js"></script>
@@ -21,18 +23,20 @@
       <div class="close hidden">X</div>
       <div class="pages">
         <div id="about-btn" class="page top left">
-          <span class="page-label top left">ABOUT</span>
+          <span class="page-label top left hover-effect">ABOUT</span>
         </div>
         <div id="menu-btn" class="page top right">
-          <span class="page-label top right">MENU</span>
+          <span class="page-label top right hover-effect">MENU</span>
+          <MenuOptions />
         </div>
         <div id="location-btn" class="page bottom left">
-          <span class="page-label bottom left">LOCATION</span>
+          <span class="page-label bottom left hover-effect">LOCATION</span>
         </div>
         <div id="contact-btn" class="page bottom right">
-          <span class="page-label bottom right">CONTACT</span>
+          <span class="page-label bottom right hover-effect">CONTACT</span>
         </div>
       </div>
+      <Menu />
     </main>
 	</body>
 </html>

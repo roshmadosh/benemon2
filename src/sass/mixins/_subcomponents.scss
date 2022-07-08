@@ -2,7 +2,6 @@
   width: 50%;
   height: 50%;
   position: relative;
-  z-index: 3;
   text-align: center;
 }
 
@@ -18,4 +17,18 @@
   top: 25vh;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+%menu-option-label {
+  font-size: $fs-300;
+  font-family: $ff-headings;
+  font-weight: 200;
+  text-decoration: none;
+  color: #222;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  &.active {
+    text-decoration: underline;
+  }
 }
