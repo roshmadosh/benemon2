@@ -1,16 +1,16 @@
-// --- [LABELS] --- //
-.labels {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50vh 50vh;
-  justify-items: center;
-  align-items: center;
-}
+// // --- [LABELS] --- //
+// .labels {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   // grid-template-rows: 50vh 50vh;
+//   justify-items: center;
+//   align-items: center;
+// }
 
 .page-label {
   @extend %page-label;
@@ -28,8 +28,8 @@
 }
 
 .logo.page-view {
-  background: #eee;
-  transform: 
+  transform:
+    translateX(calc(min(50vw, math.div($viewport-max, 2)) - math.div($logo-width, 2)))  
     scaleX(.75)
     scaleY(.75);
 }
@@ -38,67 +38,50 @@
 .pages {
   width: 100%;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .page {
   @extend %page-btn;
 }
+.page.top.right {
+  @extend %top-right;
+}
+.page.bottom.left {
+  @extend %bottom-left;
+}
+.page.bottom.right {
+  @extend %bottom-right;
+}
 
 // --- [PAGE: CLICK] --- //
 // top-left
 .page.top.left.active {
- @extend %page-active;
+  @extend %page-active;
 }
-.page.top.left.active ~ .labels > .page-label.top.right ,
-.page.top.left.active ~ .labels > .page-label.bottom.right {
-  transform: translateX(100%);
-  opacity: 0;
-}
-.page.top.left.active ~ .labels > .page-label.bottom.left {
-  transform: translateY(100%);
-  opacity: 0;
+.page.top.left.inactive {
+  @extend %page-inactive;
 }
 // top-right
 .page.top.right.active {
  @extend %page-active;
 }
-.page.top.right.active ~ .labels > .page-label.top.left ,
-.page.top.right.active ~ .labels > .page-label.bottom.left {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-.page.top.right.active ~ .labels > .page-label.bottom.right {
-  transform: translateY(100%);
-  opacity: 0;
-}
+.page.top.right.inactive {
+  @extend %page-inactive;
+ }
 //bottom-left
 .page.bottom.left.active {
  @extend %page-active;
 }
-.page.bottom.left.active ~ .labels > .page-label.top.left ,
-.page.bottom.left.active ~ .labels > .page-label.top.right {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-.page.bottom.left.active ~ .labels > .page-label.bottom.right {
-  transform: translateX(100%);
-  opacity: 0;
-}
+.page.bottom.left.inactive {
+  @extend %page-inactive;
+ }
 //bottom-right
 .page.bottom.right.active {
  @extend %page-active;
 }
-.page.bottom.right.active ~ .labels > .page-label.top.left ,
-.page.bottom.right.active ~ .labels > .page-label.bottom.left {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-.page.bottom.right.active ~ .labels > .page-label.top.right {
-  transform: translateY(-100%);
-  opacity: 0;
-}
+.page.bottom.right.inactive {
+  @extend %page-inactive;
+ }
 
 // --- [PAGE: HOVER] --- //
 // .page.top.left:hover {
@@ -113,19 +96,65 @@
 // .page.bottom.right:hover {
 //   background: rgb(203, 108, 108, 0.8);
 // }
-.page.top.left:hover ~ .labels .page-label.top.left {
+.page.top.left:hover > span {
   @extend %hover;
-  background: red;
+  @extend %hover-color;
+  transform: translate(-50%, -50%);
 }
-.page.top.right:hover ~ .labels .page-label.top.right {
+.page.top.right:hover > span  {
   @extend %hover;
-  background: red;
+  @extend %hover-color;
+  transform: translate(-50%, -50%);
 }
-.page.bottom.left:hover ~ .labels .page-label.bottom.left {
+.page.bottom.left:hover > span {
   @extend %hover;
-  background: red;
+  @extend %hover-color;
+  transform: translate(-50%, -50%);
 }
-.page.bottom.right:hover ~ .labels .page-label.bottom.right {
+.page.bottom.right:hover > span {
   @extend %hover;
-  background: red;
+  @extend %hover-color;
+  transform: translate(-50%, -50%);
+}
+
+// --- [PAGE-LABEL TRANSITIONS] --- //
+.fade-up {
+  > span {
+    transform: translate(-50%, -300%);
+  }
+}
+.fade-down {
+  > span {
+    transform: translate(-50%, 200%);
+  }
+}
+.fade-left {
+  > span {
+    transform: translate(-300%, -50%);
+  }
+}
+.fade-right {
+  > span {
+    transform: translate(200%, -50%);
+  }
+}
+.fade-up.fade-left {
+  > span {
+    transform: translate(-300%, -300%) !important;
+  }
+}
+.fade-up.fade-right {
+  > span {
+    transform: translate(200%, -300%) !important;
+  }
+}
+.fade-down.fade-left {
+  > span {
+    transform: translate(-300%, 200%) !important;
+  }
+}
+.fade-down.fade-right {
+  > span {
+    transform: translate(200%, 200%) !important;
+  }
 }

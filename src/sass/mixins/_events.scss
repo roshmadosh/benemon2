@@ -1,10 +1,23 @@
 %hover {
   cursor: pointer;
-  transform: scaleX(1.1) scaleY(1.1);
+}
+
+%hover-color {
+  background: #222;
+  color: #eee;
 }
 
 %page-active {
-  z-index: 0;
-  grid-column: 1 / -1;
-  grid-row: 1 / span 999;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  > span {
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+}
+
+%page-inactive {
+  pointer-events: none;
+  opacity: 0;
 }

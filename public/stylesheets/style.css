@@ -4,45 +4,68 @@ main {
   margin: 0 auto;
 }
 
+.page.top.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.page.bottom.left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.page.bottom.right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .page {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  z-index: 2;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  z-index: 3;
+  text-align: center;
 }
 
 .page-label {
   color: #222;
-  font-size: 4.8rem;
+  font-size: clamp(3.2rem, 1.366vw + 2.756rem, 4.8rem);
   font-weight: 200;
   font-family: "Oswald", sans-serif;
   opacity: 1;
-  pointer-events: none;
+  cursor: pointer;
   z-index: 3;
+  position: absolute;
+  top: 25vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.close:hover, .page.bottom.right:hover ~ .labels .page-label.bottom.right, .page.bottom.left:hover ~ .labels .page-label.bottom.left, .page.top.right:hover ~ .labels .page-label.top.right, .page.top.left:hover ~ .labels .page-label.top.left {
+.close:hover, .page.bottom.right:hover > span, .page.bottom.left:hover > span, .page.top.right:hover > span, .page.top.left:hover > span {
   cursor: pointer;
-  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.page.bottom.right:hover > span, .page.bottom.left:hover > span, .page.top.right:hover > span, .page.top.left:hover > span {
+  background: #222;
+  color: #eee;
 }
 
 .page.bottom.right.active, .page.bottom.left.active, .page.top.right.active, .page.top.left.active {
-  z-index: 0;
-  grid-column: 1/-1;
-  grid-row: 1/span 999;
-}
-
-.labels {
-  position: absolute;
-  top: 0;
-  left: 0;
+  pointer-events: none;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50vh 50vh;
-  justify-items: center;
-  align-items: center;
+}
+.page.bottom.right.active > span, .page.bottom.left.active > span, .page.top.right.active > span, .page.top.left.active > span {
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.page.bottom.right.inactive, .page.bottom.left.inactive, .page.top.right.inactive, .page.top.left.inactive {
+  pointer-events: none;
+  opacity: 0;
 }
 
 .logo {
@@ -54,75 +77,60 @@ main {
 }
 
 .logo.page-view {
-  background: #eee;
-  transform: scaleX(0.75) scaleY(0.75);
+  transform: translateX(calc(min(50vw, 74.8rem) - clamp(16rem, 11.96vw + 12.114rem, 30rem)/2)) scaleX(0.75) scaleY(0.75);
 }
 
 .pages {
   width: 100%;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
-.page.top.left.active ~ .labels > .page-label.top.right,
-.page.top.left.active ~ .labels > .page-label.bottom.right {
-  transform: translateX(100%);
-  opacity: 0;
+.page.top.left:hover > span {
+  transform: translate(-50%, -50%);
 }
 
-.page.top.left.active ~ .labels > .page-label.bottom.left {
-  transform: translateY(100%);
-  opacity: 0;
+.page.top.right:hover > span {
+  transform: translate(-50%, -50%);
 }
 
-.page.top.right.active ~ .labels > .page-label.top.left,
-.page.top.right.active ~ .labels > .page-label.bottom.left {
-  transform: translateX(-100%);
-  opacity: 0;
+.page.bottom.left:hover > span {
+  transform: translate(-50%, -50%);
 }
 
-.page.top.right.active ~ .labels > .page-label.bottom.right {
-  transform: translateY(100%);
-  opacity: 0;
+.page.bottom.right:hover > span {
+  transform: translate(-50%, -50%);
 }
 
-.page.bottom.left.active ~ .labels > .page-label.top.left,
-.page.bottom.left.active ~ .labels > .page-label.top.right {
-  transform: translateY(-100%);
-  opacity: 0;
+.fade-up > span {
+  transform: translate(-50%, -300%);
 }
 
-.page.bottom.left.active ~ .labels > .page-label.bottom.right {
-  transform: translateX(100%);
-  opacity: 0;
+.fade-down > span {
+  transform: translate(-50%, 200%);
 }
 
-.page.bottom.right.active ~ .labels > .page-label.top.left,
-.page.bottom.right.active ~ .labels > .page-label.bottom.left {
-  transform: translateX(-100%);
-  opacity: 0;
+.fade-left > span {
+  transform: translate(-300%, -50%);
 }
 
-.page.bottom.right.active ~ .labels > .page-label.top.right {
-  transform: translateY(-100%);
-  opacity: 0;
+.fade-right > span {
+  transform: translate(200%, -50%);
 }
 
-.page.top.left:hover ~ .labels .page-label.top.left {
-  background: red;
+.fade-up.fade-left > span {
+  transform: translate(-300%, -300%) !important;
 }
 
-.page.top.right:hover ~ .labels .page-label.top.right {
-  background: red;
+.fade-up.fade-right > span {
+  transform: translate(200%, -300%) !important;
 }
 
-.page.bottom.left:hover ~ .labels .page-label.bottom.left {
-  background: red;
+.fade-down.fade-left > span {
+  transform: translate(-300%, 200%) !important;
 }
 
-.page.bottom.right:hover ~ .labels .page-label.bottom.right {
-  background: red;
+.fade-down.fade-right > span {
+  transform: translate(200%, 200%) !important;
 }
 
 .close {
@@ -145,7 +153,7 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.25s;
+  transition: all 0.4s;
   overflow: hidden;
 }
 
@@ -155,7 +163,7 @@ html {
 
 body {
   width: 100%;
-  background: #eee;
+  background: #fff;
 }
 
 main {
