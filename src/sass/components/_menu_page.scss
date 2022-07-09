@@ -1,9 +1,9 @@
 // --- [MENU OPTIONS] --- //
 #menu-options {
   width: 90%;
-  margin: 1.6rem auto 0;
-  display: flex;
-  justify-content: space-between;
+  margin: 1.6rem 5% 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   position: relative;
   top: calc(25vh + 5vh);
 }
@@ -35,13 +35,12 @@
 }
 
 .menu-section {
-  // minus border width
-  
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
   opacity: 0;
+  transform: translateY(5rem);
 }
 .menu-subsection {
   margin-bottom: 3.2rem;
@@ -70,13 +69,10 @@
   font-weight: 300;
   text-transform: uppercase;
 }
-.menu-section p {
-  @extend %menu-paragraph;
-  @extend %text-centered;  
-}
 
 .menu-section.active {
   opacity: 1;
+  transform: translateY(0);
 }
 .menu-content {
   border: $menu-border-width solid #222;
@@ -87,5 +83,22 @@
   margin-bottom: 5%;
 }
 .menu-item-price {
+  @extend %menu-paragraph;
+  @extend %text-centered; 
   margin-bottom: .25em;
+}
+.menu-item-desc {
+  @extend %menu-paragraph;
+  @extend %text-centered; 
+}
+
+.menu-subheader {
+  @extend %subheader;
+  @extend %menu-paragraph;
+  @extend %text-centered; 
+}
+
+.section-description {
+  @extend %menu-paragraph;
+  margin-bottom: $fs-menu-h1; 
 }

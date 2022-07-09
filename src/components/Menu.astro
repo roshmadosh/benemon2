@@ -155,9 +155,63 @@ const curry = [
     desc: 'Curry-spiced, tender stewed beef served with an all vegetable broth savory curry'
   },
 ]
+
+const cocktails = [
+  {
+    title: 'summer echoes',
+    price: 16,
+    desc: 'Plum wine, yuzu juice, shiso leaf, pickled plum juice'
+  },
+  {
+    title: 'await the moon',
+    price: 16,
+    desc: 'Pineapple-infused sake, matcha, honey syrup, egg white, white chocolate'
+  },  
+  {
+    title: 'white clouds',
+    price: 16,
+    desc: 'Roasted green tea sake, Junmai sake, cream, brown sugar syrup'
+  },  
+  {
+    title: 'rise at eve',
+    price: 16,
+    desc: 'Juniper-infused sake, shiso leaf, sudachi syrup, dried lime'
+  },
+  {
+    title: 'tale of old',
+    price: 16,
+    desc: 'Cedar cask sake, orange-infused sake, Lillet Blanc, lemon peel'
+  },
+  {
+    title: 'a hundred autumn nights',
+    price: 27,
+    desc: 'Warm yuzu sake carafe, lemon twist, shiso leaf, rock sugar (additional cups +$2.5)'
+  },
+]
+
+const flights = [
+  {
+    title: 'No. I',
+    subtitle: 'Dry, bold, and crisp',
+    price: 19,
+    desc: 'Kyuzaemon, Suigei No. 54, Yume To Maboroshi No Monogatari'
+  },
+  {
+    title: 'No. II',
+    subtitle: 'Light, refreshing, and zesty',
+    price: 19,
+    desc: 'Shimeharitsuru, Shintaro, Kinoene'
+  },
+  {
+    title: 'No. III',
+    subtitle: 'Fruity, subtle, and rich',
+    price: 19,
+    desc: 'Souden, Manzairaku, Shirakawago'
+  }
+]
 ---
 <div id="menu" class="hidden">
-  <section id="dinner" class="menu-section active">
+  <section id="small-plates" class="menu-section active">
     <div class="menu-content"> 
       <h1>SMALL PLATES</h1>
       <div class="menu-subsection">
@@ -192,7 +246,10 @@ const curry = [
           </div>
         ))}
       </div>
-
+    </div>
+  </section>
+  <section id="mains" class="menu-section inactive">
+    <div class="menu-content">
       <h1>DONBURI<br/><p>Japanese rice bowls</p></h1>
       <div class="menu-subsection">
       {donburi.map(item => (
@@ -217,14 +274,53 @@ const curry = [
       </div>
     </div>
   </section>
-  <section id="lunch" class="menu-section inactive">
-    <div class="menu-content">
-      <h1>Lunch</h1>
-    </div>
-  </section>
   <section id="drinks" class="menu-section inactive">
     <div class="menu-content">
-      <h1>Drinks</h1>
+      <h1>SAKE CREATIONS</h1>
+      <p class='section-description'><i>Our cocktails are inspired and named after verses found in the Manyoshu, 
+        Japan’s oldest anthology of poetry. Compiled in the 8th century, the poems 
+        express the beauty of nature and the lives of the people who lived in 
+        ancient Japan.</i></p>
+      <br/>
+      <div class="menu-subsection">
+      <h2>COCKTAILS & INFUSIONS</h2>
+      {cocktails.map(item => (
+        <div class="menu-item">
+          <h3>{(item.title)}</h3>
+          <p class="menu-item-price">{item.price}</p>
+          <p class="menu-item-desc">{item.desc}</p>
+        </div>
+      ))}
+      </div>
+
+      <div class="menu-subsection">
+        <h2>SAKE FLIGHTS</h2>
+        <p class='menu-subheader'>Curated selection of three craft sake samplers. Select one of three themes:</p>
+        {flights.map(item => (
+          <div class="menu-item">
+            <h3>{(item.title)}</h3>
+            <p class="menu-item-price">{item.price}</p>
+            <p class="menu-item-desc">{item.desc}</p>
+          </div>
+        ))}
+        </div>
+
+        <h1>CRAFT SAKE</h1>
+        <div class="menu-subsection">
+          <h2>JUNMAI SAKE</h2>
+          <p class='menu-subheader'>Pure rice sake</p>
+     
+          {[].map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+
+        </div>
+  
+
     </div>
   </section>
 </div>

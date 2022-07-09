@@ -10,8 +10,10 @@ const pageLabels = Array.from(document.querySelectorAll('.page-label'));
 const menuOptionsContainer = document.querySelector('#menu-options');
 const menuOptions = Array.from(menuOptionsContainer.children);
 const menuOptionLabels = menuOptions.map(option => option.children[0]);
+
 // the container for the menu itself
 const menu = document.querySelector('#menu');
+const menuSections = Array.from(document.querySelectorAll('.menu-section'));
 
 const logo = document.querySelector('.logo');
 const closeBtn = document.querySelector('.close');
@@ -22,8 +24,8 @@ pageLabels.forEach((label, index) => {
   label.addEventListener('click', () => pageClickHandler(index));
 });
 
-menuOptions.forEach(option => {
-  option.addEventListener('click', (e) => optionClickHandler(e.target));
+menuOptions.forEach((option, index) => {
+  option.addEventListener('click', (e) => optionClickHandler(e.target, index));
 });
 
 closeBtn.addEventListener('click', closeClickHandler);
@@ -61,8 +63,10 @@ function pageClickHandler(activeIndex) {
   addClass(activePage, 'active');
 }
 
-function optionClickHandler(activeOption) {
+function optionClickHandler(activeOption, activeIndex) {
   removeClassFromAll(menuOptionLabels, 'active');
+  removeClassFromAll(menuSections, 'active');
+  addClass(menuSections[activeIndex], 'active');
   addClass(activeOption, 'active');
 }
 

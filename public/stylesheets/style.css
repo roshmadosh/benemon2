@@ -44,12 +44,12 @@ main {
 }
 
 .menu-option-label {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-family: "Oswald", sans-serif;
   font-weight: 200;
   text-decoration: none;
   color: #222;
-  padding: max(1.2rem, 2.5vw) max(2.4rem, 5vw);
+  padding: max(2.4rem, 5vw) max(2.4rem, 5vw);
   cursor: pointer;
 }
 .active.menu-option-label {
@@ -58,16 +58,22 @@ main {
 
 .menu-section h2, .menu-section h1 {
   font-family: "IM Fell Great Primer", serif;
-  margin: 1em 0;
+  margin-bottom: 1em;
 }
 
-.menu-section p, .menu-item h3, .menu-section h2, .menu-section h1 {
+.menu-subheader, .menu-item-desc, .menu-item-price, .menu-item h3, .menu-section h2, .menu-section h1 {
   text-align: center;
 }
 
-.menu-section p, .menu-item h3 {
+.section-description, .menu-subheader, .menu-item-desc, .menu-item-price, .menu-item h3 {
   font-family: "IM Fell Great Primer", serif;
   font-size: 1.6rem;
+}
+
+.menu-subheader {
+  font-weight: 700;
+  margin-top: -1em;
+  margin-bottom: 2rem;
 }
 
 .page.bottom.right:hover > span.hover-effect, .page.bottom.left:hover > span.hover-effect, .page.top.right:hover > span.hover-effect, .page.top.left:hover > span.hover-effect {
@@ -145,9 +151,9 @@ main.of-hidden {
 
 #menu-options {
   width: 90%;
-  margin: 1.6rem auto 0;
-  display: flex;
-  justify-content: space-between;
+  margin: 1.6rem 5% 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   position: relative;
   top: 30vh;
 }
@@ -175,6 +181,7 @@ main.of-hidden {
   left: 0;
   top: 0;
   opacity: 0;
+  transform: translateY(5rem);
 }
 
 .menu-subsection {
@@ -190,7 +197,7 @@ main.of-hidden {
 }
 
 .menu-section h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   text-decoration: underline;
 }
 
@@ -202,11 +209,12 @@ main.of-hidden {
 
 .menu-section.active {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .menu-content {
   border: 0.2rem solid #222;
-  padding: calc(max(1.2rem, 2.5vw) - 0.2rem) calc(max(2.4rem, 5vw) - 0.2rem);
+  padding: calc(max(2.4rem, 5vw) - 0.2rem) calc(max(2.4rem, 5vw) - 0.2rem);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -215,6 +223,10 @@ main.of-hidden {
 
 .menu-item-price {
   margin-bottom: 0.25em;
+}
+
+.section-description {
+  margin-bottom: 3.2rem;
 }
 
 .close {

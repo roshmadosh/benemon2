@@ -36,7 +36,7 @@
 
 %menu-header {
   font-family: $ff-menu;
-  margin: 1em 0;
+  margin-bottom: 1em;
 }
 %text-centered {
   text-align: center;
@@ -44,4 +44,10 @@
 %menu-paragraph {
   font-family: $ff-menu;
   font-size: $fs-menu-p;
+}
+
+%subheader {
+  font-weight: 700;
+  margin-top: -1em;
+  margin-bottom: 2rem;
 }
