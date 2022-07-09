@@ -1,20 +1,230 @@
 ---
+const fromTheGarden = [
+  {
+    title: 'gobo sticks',
+    price: 7,
+    desc: "Burdock root sticks sautéed in sesame oil and flash fried"
+  },
+  {
+    title: 'edamame peperoncino',
+    price: 8,
+    desc: "Young soy beans, garlic, olive oil, chili flakes"
+  },
+  {
+    title: 'anchovy fried potatoes',
+    price: 11,
+    desc: "Fried potatoes, homemade anchovy sauce, garlic, parmesan"
+  },
+  {
+    title: 'tofu fire',
+    price: 13,
+    desc: "Light batter-fried tofu, sweet n’ hot chili sauce, topped with scallions"
+  },
+  {
+    title: 'gomadare salad',
+    price: 13,
+    desc: "Arugula, sweet shiitake, daikon, red seaweed, sesame seed dressing"
+  },
+  {
+    title: 'tofu hijiki salad',
+    price: 13,
+    desc: "Crushed tofu, arugula, hijiki, lemon vinaigrette, miso dressing"
+  }
+]
 
+const fromTheFarm = [
+  {
+    title: 'kara\'age fried chicken',
+    price: 7,
+    desc: 'Japanese-style juicy fried dark meat chicken, lemon slice, homemade spicy mayo'
+  },
+  {
+    title: 'smoked pork belly',
+    price: 12,
+    desc: 'Smoked pork belly, shishito pepper, spicy black kaimi sauce'
+  },
+  {
+    title: 'black miso chicken',
+    price: 14,
+    desc: 'Broiled dark meat chicken, crushed walnuts & black sesame, black miso balsamic sauce, topped with shredded scallions'
+  },
+  {
+    title: 'garlic beef steak',
+    price: 16,
+    desc: '6 oz. Angus NY Strip steak cooked rare*, crispy rice patty, savory garlic sauce'
+  },
+  {
+    title: 'beef tataki',
+    price: 16,
+    desc: 'Seared rare angus beef*, daikon sprouts, apple vinegar, onion soy sauce'
+  }
+]
+
+const fromTheSea = [
+  {
+    title: 'shrimp tempura',
+    price: 12,
+    desc: 'Tempura fried shrimp, kabocha, string beans, green tea sea salt'
+  },
+  {
+    title: 'tuna tataki',
+    price: 14,
+    desc: 'Seared tuna*, Cajun spice, sweet miso-nuta sauce with scallions'
+  },
+  {
+    title: 'hot squid',
+    price: 15,
+    desc: 'Sliced squid, lotus root, shiitake mushroom, sautéed in a spicy red pepper sauce, topped with cilantro'
+  },
+  {
+    title: 'creamy baked salmon',
+    price: 15,
+    desc: 'Quartered salmon fillet, toasted creamy scallion-enoki mushroom sauce'
+  },
+  {
+    title: 'soft shell crab',
+    price: 16,
+    desc: 'Deep fried soft shell crab, ichimi ponzu dipping sauce'
+  },
+];
+
+const donburi = [
+  {
+    title: 'oyako don',
+    price: 17,
+    desc: 'Grilled marinated dark meat chicken, shiitake mushrooms, onions, scallions and soft-cooked cage-free eggs* simmered in a rich soy sauce broth, served over rice'
+  },
+  {
+    title: 'katsu don',
+    price: 18,
+    desc: 'Panko breaded pork cutlet, onions, scallions and softcooked cage-free eggs* simmered in a rich soy saucebroth, served over rice'
+  },
+  {
+    title: 'vegetable ten don',
+    price: 18,
+    desc: 'Deep fried airy and crispy kabocha, eggplant, string beans, shiitake mushroom, okra, broccoli, lotus root and carrot tempura served over rice with our original savory tentsuyu sauce'
+  },
+  {
+    title: 'tsukimi tori don',
+    price: 18,
+    desc: 'Deep fried white meat popcorn chicken, shiitake & enoki mushrooms, shirataki noodles, onions, simmered in a sweet soy sauce topped with a cage-free soft-steamed egg*, served over rice'
+  },
+  {
+    title: 'nanban don',
+    price: 18,
+    desc: 'Crispy white meat chicken tempura glazed with a sweet, rich nanban sauce and homemade tartar sauce, topped with sesame seeds and a pinch of scallions and ginger, served over rice'
+  },
+  {
+    title: 'yakiniku don',
+    price: 19,
+    desc: 'Tender slices of beef sautéed with onions in a savory Japanese barbeque sauce, topped with sesame seeds, scallions and a pinch of red ginger, served over rice'
+  },
+  {
+    title: 'shrimp & anago ten don',
+    price: 20,
+    desc: 'Deep fried airy and crispy shrimp, conger eel, kabocha, broccoli, and eggplant tempura served over rice with our original savory tentsuyu sauce'
+  },
+  {
+    title: 'una-tama don',
+    price: 21,
+    desc: 'All-natural eel, onions, shiitake mushrooms, scallions and soft-cooked cage-free eggs* simmered in a rich soy sauce broth, served over rice'
+  },
+  {
+    title: 'unagi don',
+    price: 29,
+    desc: 'Delicately broiled all-natural whole eel fillet drizzled with a robust, sweet eel sauce , topped with sesame seeds and served over rice with shredded nori'
+  },
+]
+
+const curry = [
+  {
+    title: 'vegetable curry',
+    price: 18,
+    desc: 'Roasted eggplant, string beans, bell peppers, okra, and broccoli, served with an all-vegetable broth savory curry'
+
+  },
+  {
+    title: 'katsu curry',
+    subtitle: 'Pork or Chicken',
+    price: 19,
+    desc: 'Panko-breaded deep fried white meat chicken or pork cutlet served with an all-vegetable broth savory curry'
+  },
+  {
+    title: 'beef curry',
+    price: 19,
+    desc: 'Curry-spiced, tender stewed beef served with an all vegetable broth savory curry'
+  },
+]
 ---
 <div id="menu" class="hidden">
-  <section id="dinner">
-    <div class="content active">
-      <h1>Small Plates</h1>
+  <section id="dinner" class="menu-section active">
+    <div class="menu-content"> 
+      <h1>SMALL PLATES</h1>
+      <div class="menu-subsection">
+        <h2>From the Garden</h2>
+        {fromTheGarden.map(item => (
+          <div class="menu-item">
+            <h3>{(item.title)}</h3>
+            <p class="menu-item-price">{item.price}</p>
+            <p class="menu-item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="menu-subsection">
+        <h2>From the Farm</h2>
+        {fromTheFarm.map(item => (
+          <div class="menu-item">
+            <h3>{(item.title)}</h3>
+            <p class="menu-item-price">{item.price}</p>
+            <p class="menu-item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="menu-subsection">
+        <h2>From the Sea</h2>
+        {fromTheSea.map(item => (
+          <div class="menu-item">
+            <h3>{(item.title)}</h3>
+            <p class="menu-item-price">{item.price}</p>
+            <p class="menu-item-desc">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <h1>DONBURI<br/><p>Japanese rice bowls</p></h1>
+      <div class="menu-subsection">
+      {donburi.map(item => (
+        <div class="menu-item">
+          <h3>{(item.title)}</h3>
+          <p class="menu-item-price">{item.price}</p>
+          <p class="menu-item-desc">{item.desc}</p>
+        </div>
+      ))}
+      </div>
+
+      <h1>JAPANESE CURRY<br/><p>Served with rice and homemade radish pickles</p></h1>
+      <div class="menu-subsection">
+      {curry.map(item => (
+        <div class="menu-item">
+          <h3>{(item.title)}</h3>
+          {item.subtitle ? <p><em>{item.subtitle}</em></p> : ''}
+          <p class="menu-item-price">{item.price}</p>
+          <p class="menu-item-desc">{item.desc}</p>
+        </div>
+      ))}
+      </div>
     </div>
   </section>
-  <section id="lunch">
-    <div class="content inactive">
-      
+  <section id="lunch" class="menu-section inactive">
+    <div class="menu-content">
+      <h1>Lunch</h1>
     </div>
   </section>
-  <section id="drinks">
-    <div class="content inactive">
-      
+  <section id="drinks" class="menu-section inactive">
+    <div class="menu-content">
+      <h1>Drinks</h1>
     </div>
   </section>
 </div>

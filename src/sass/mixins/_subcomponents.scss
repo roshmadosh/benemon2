@@ -26,9 +26,22 @@
   font-weight: 200;
   text-decoration: none;
   color: #222;
-  padding: 0.5em 1em;
+  padding: $menu-padding-height $menu-padding-width;
   cursor: pointer;
   &.active {
     text-decoration: underline;
   }
+}
+
+
+%menu-header {
+  font-family: $ff-menu;
+  margin: 1em 0;
+}
+%text-centered {
+  text-align: center;
+}
+%menu-paragraph {
+  font-family: $ff-menu;
+  font-size: $fs-menu-p;
 }

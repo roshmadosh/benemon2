@@ -1,8 +1,9 @@
-
+// --- [MENU OPTIONS] --- //
 #menu-options {
-  width: 100%;
+  width: 90%;
+  margin: 1.6rem auto 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   position: relative;
   top: calc(25vh + 5vh);
 }
@@ -11,7 +12,6 @@
   transform: translateX(400%);
 }
 
-
 .menu-option {
 }
 
@@ -19,21 +19,73 @@
   @extend %menu-option-label;
 }
 
-
+// --- [MENU CONTENT] --- //
 #menu {
   position: absolute;
   left: 0;
-  top: 40vh;
+  top: max(20rem, 40vh);
   left: 5%;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
   gap: 4rem;
-  border: .2rem solid black;
+  width: 90%;
 }
 
 #menu.hidden {
   @extend %hidden;
-  transform: translateY(10%);
+  transform: translateY(5rem);
 }
 
+.menu-section {
+  // minus border width
+  
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.menu-subsection {
+  margin-bottom: 3.2rem;
+}
+
+.menu-item {
+  margin-bottom: 3em;
+}
+
+.menu-section h1 {
+  @extend %menu-header;
+  @extend %text-centered;
+  font-size: $fs-menu-h1;
+}
+.menu-section h2 {
+  @extend %menu-header;
+  @extend %text-centered;
+  font-size: $fs-menu-h2;
+  text-decoration: underline;
+}
+
+.menu-item h3 {
+  @extend %menu-paragraph;
+  @extend %text-centered;
+  font-size: $fs-menu-p;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.menu-section p {
+  @extend %menu-paragraph;
+  @extend %text-centered;  
+}
+
+.menu-section.active {
+  opacity: 1;
+}
+.menu-content {
+  border: $menu-border-width solid #222;
+  padding: calc($menu-padding-height - $menu-border-width) calc($menu-padding-width - $menu-border-width);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 5%;
+}
+.menu-item-price {
+  margin-bottom: .25em;
+}
