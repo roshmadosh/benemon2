@@ -1,4 +1,7 @@
 ---
+import SakeSubHeader from "./SakeSubHeader.astro";
+import { accentedA, angledA, capitalE } from "../js/weird-letters";
+
 const fromTheGarden = [
   {
     title: 'gobo sticks',
@@ -187,7 +190,7 @@ const cocktails = [
     price: 27,
     desc: 'Warm yuzu sake carafe, lemon twist, shiso leaf, rock sugar (additional cups +$2.5)'
   },
-]
+];
 
 const flights = [
   {
@@ -209,6 +212,316 @@ const flights = [
     desc: 'Souden, Manzairaku, Shirakawago'
   }
 ]
+
+const junmai = [
+  {
+    title: 'hizo otokoyama',
+    subtitle: '"Man\'s Moutain: Special Reserve"',
+    price: '12 / 22 / 48',
+    desc: 'Bold, dried ripe fruit'
+  },
+  {
+    title: 'kyuzaemon taruzake',
+    subtitle: '"Kyuzaemon: Cask Sake"',
+    price: '13 / 24 / 52',
+    desc: 'Stored in cedar casks, dry cedar fragrance'
+  },
+  {
+    title: 'souden',
+    subtitle: '"Azure Fields"',
+    price: '13 / 24 / 52',
+    desc: '"Fruity, sweet white Muscat grapes"'
+  },
+  {
+    title: 'shintaro',
+    subtitle: '"Shintaro"',
+    price: '14 / - / 56',
+    desc: 'Light body, refreshing, subtle acidity, easy-drinker'
+  },
+  {
+    title: 'kagiya namazume',
+    subtitle: '"Kagiya: Bottled unpasteurized"',
+    price: '- / 26 / 56',
+    desc: 'Bottled unpasteurized, zesty, exceptionally aromatic and fresh'
+  },
+  {
+    title: 'kusukami',
+    subtitle: '"Camphor Tree God"',
+    price: '- / - / 58',
+    desc: 'Robust earthiness, mountain-forest-after-rainfall aroma'
+  },
+  {
+    title: 'genshu onigoroshi',
+    subtitle: '"Demon Slayer: Cask Strength',
+    price: '- / 27 / 60',
+    desc: 'Dry, fat texture, notes of berries, green plum'
+  },
+  {
+    title: 'kan nihonkai',
+    subtitle: '"Rim of the Sea of Japan"',
+    price: '- / - / 62',
+    desc: 'Our driest sake, cask strength, bold and punchy, zingy'
+  },
+];
+
+const ginjyo = [
+{
+    title: 'suigei no. 54',
+    subtitle: '"Drunked Whale No. 54"',
+    price: '15 / - / 60',
+    desc: 'Crisp dryness, light body, perfect pair for meats and seafood'
+  },
+  {
+    title: 'yume to maboroshi no monogatari',
+    subtitle: '"A Tale of Dreams and Illusions"',
+    price: '15 / - / 60',
+    desc: 'Gamey dryness, rice-forward, robust, clean finish'
+  },
+  {
+    title: 'kinoene',
+    subtitle: '"First Year"',
+    price: '15 / - / 60',
+    desc: 'Sweet fragranace, delicate effervescence, clear finish'
+  },
+  {
+    title: 'koshi no iso',
+    subtitle: '"Seashore of Koshi"',
+    price: '- / 29 / 64',
+    desc: 'Non-charcoal filtered, cask strength, full-bodied'
+  },
+  {
+    title: 'kiseki no osake',
+    subtitle: '"Miracle Sake"',
+    price: '- / - / 72',
+    desc: 'Hints of apple, lightly sweet, wonderfully smooth, made from Kimura-method naturally cultivated rice'
+  },
+]
+
+const daiginjyo = [
+{
+    title: 'kiku-masamune: kimoto',
+    subtitle: '"Kiku-Masamune: Kimoto Style"',
+    price: '16 / 29 / 64',
+    desc: 'Delicate, balanced, well-rounded, smooth'
+  },
+  {
+    title: 'senkin: modern',
+    subtitle: '"Immortal Wing: Modern Brew"',
+    price: '- / 31 / 68',
+    desc: 'Juicy, slightly sweet, wit a lively puckering finish, complex and unique'
+  },
+  {
+    title: 'tenryo koshu',
+    subtitle: '"Imperial Domain: Aged Sake"',
+    price: '- / 31 / 68',
+    desc: 'Notes of ripe apricot, plum, touch of raisin on the finish, smooth'
+  },
+  {
+    title: 'kansansui',
+    subtitle: '"Cold Mountain Water"',
+    price: '- / 38 / 84',
+    desc: 'Meditatively crisp, exceptionally smooth, subtle notes of rice and fruit'
+  },
+  {
+    title: 'dassai 23',
+    subtitle: '"Otter Fest 23"',
+    price: '- / 68 / 150',
+    desc: 'Uses rice polished to an unprecedented 23% ratio, notes of grapes, flowers, strawberries and mineral water, with hints of brown sugar and fleshy plums, luscious and delicate'
+  },
+]
+
+const honjozo = [
+{
+    title: 'shimeharitsuru',
+    subtitle: '"Shimehari Crane"',
+    price: '14 / - / 56',
+    desc: 'Light and dry, fruit with a hint of bananas'
+  },
+  {
+    title: 'manzairaku',
+    subtitle: '"Ten Thousand Years of Music"',
+    price: '15 / - / 60',
+    desc: 'Light, rounded flavors, subtle grain notes, an all-day sake'
+  },
+];
+
+const nigori = [
+{
+    title: 'shirakawago',
+    subtitle: '"Shirakawa Village"',
+    price: '15 / 27 / 60',
+    desc: 'Milky, sweet dry pear, creamy rice texture'
+  },
+];
+
+const fruitSake = [
+{
+    title: 'kagatsuru plum',
+    subtitle: '"Kaga Crane"',
+    price: '16 / - / 64',
+    desc: 'Mildly sweet, delicate fruitiness, slightly tart, 11% abv'
+  },
+  {
+    title: 'yu-agari yuzu',
+    subtitle: '"Weekender Yuzu"',
+    price: '16 / - / 64',
+    desc: 'Juicy citrus, mild sweetness, zesty, refreshing, 9% abv'
+  },
+];
+
+const sparkling = [
+  {
+    title: 'ai no hime',
+    subtitle: '"Princess of Love"',
+    price: '16',
+    desc: 'Sweet, light, fruity, naturally carbonated and brewed with a special red beni koji, 180ml bottle, 7-8% ABV'
+  },
+];
+
+const hotSake = [
+  { 
+    title: 'hizo otokoyama',
+    subtitle: '"Man\'s Mountain: Special Reserve"',
+    price: '22',
+    desc: 'Bold, dried ripe fruit, dry and warming, 300ml carafe'
+  },
+]
+
+const redWine = [
+  {
+    title: 'malbec',
+    subtitle: `Luj\xC9n de Cuyo, Mendoza, 2019`,
+    price: '12 / 48',
+    desc: 'Notes of cherry and oak, punchy finish'
+  },
+  {
+    title: 'pinot noir',
+    subtitle: `M${accentedA}connais, Burgundy, 2019`,
+    price: '13 / 52',
+    desc: 'Notes of red plum, full bodied'
+  },
+  {
+    title: 'cabernet sauvignon',
+    subtitle: `North Coast, California, 2018`,
+    price: '14 / 56',
+    desc: 'Spicy ripe fruits, vanilla, balanced'
+  },
+  {
+    title: 'chianti classico',
+    subtitle: `Radda, Tuscany, 2018`,
+    price: '64',
+    desc: 'Layered notes of fresh plum, dried herbs, black raspberry and cherry, mineral finish. Made naturally with organic grapes'
+  },
+];
+
+const whiteWine = [
+{
+    title: 'pinot grigio',
+    subtitle: `Delle Venezi, Verona, 2019`,
+    price: '12 / 48',
+    desc: 'Dry, crisp and refreshing'
+  },
+  {
+    title: 'sauvignon blanc',
+    subtitle: `Touraine, Loire Valley, 2019`,
+    price: '13 / 52',
+    desc: 'Bright fruitiess, zesty, citrus aroma'
+  },
+  {
+    title: 'chardonnay',
+    subtitle: `M${angledA}con La Roche-Vineuse, Burgundy, 2019`,
+    price: '13 / 52',
+    desc: 'Soft hints of vanilla and pearl'
+  },
+  {
+    title: 'riesling',
+    subtitle: `Mosel, Rhineland-Palantine, 2018`,
+    price: '14 / 56',
+    desc: 'Blooming aroma, crisp sweetness, refreshing mineral finish'
+  },
+];
+
+const rose = [
+{
+    title: `pinot noir ros${capitalE}`,
+    subtitle: `Loire Valley, 2019`,
+    price: '12 / 48',
+    desc: 'Juicy, hints of strawberry, peaches, crisp acidity'
+  },
+]
+
+const beer = [
+  {
+    title: 'sapporo',
+    subtitle: 'Japanese Rice Lager, 5.0%',
+    price: 7,
+  },
+  {
+    title: 'save the robots ipa',
+    subtitle: 'East Coast IPA, 7.0%',
+    price: 8,
+  },
+  {
+    title: 'lionstout',
+    subtitle: 'Foreign Stout, 8.8%',
+    price: 8,
+  },
+  {
+    title: 'five boroughs pilsner',
+    subtitle: 'Czech-style Pilsner, 5.0%',
+    price: 8,
+  }
+];
+
+const juice = [
+  {
+    title: 'ume',
+    price: 7,
+    desc: 'Sparkling Japanese plum juice, fruity & fragrant, slightly sweet, 250mL'
+  },
+  {
+    title: 'mikan',
+    price: 7,
+    desc: 'Sparkling Japanese tangerine juice, zesty & bright, slightly sweet, 250ml'
+  },
+  {
+    title: 'yuzu',
+    price: 7,
+    desc: 'Sparkling Japanese yuzu juice, citrusy & refreshing, slightly sweet, 250ml'
+  },
+];
+
+const tea = [
+  {
+    title: 'sen-cha',
+    price: 3,
+    desc: 'Classic Japanese green tea'
+  },
+  {
+    title: 'genmai-cha',
+    price: 3,
+    desc: 'Japanese green tea with roasted rice'
+  },
+  {
+    title: 'earl grey',
+    price: 3,
+    desc: 'Black tea with bergamot'
+  },
+  {
+    title: 'rooibos',
+    price: 3,
+    desc: 'South African herbal red tea, naturally caffeine-free'
+  },
+];
+
+const water = [
+  {
+    title: 'san pellegrino',
+    price: 4,
+    desc: 'Unflavored sparkling water, 500mL'
+  }
+]
+
 ---
 <div id="menu" class="hidden">
   <section id="small-plates" class="menu-section active">
@@ -248,9 +561,11 @@ const flights = [
       </div>
     </div>
   </section>
+  
   <section id="mains" class="menu-section inactive">
     <div class="menu-content">
-      <h1>DONBURI<br/><p>Japanese rice bowls</p></h1>
+      <h1>DONBURI</h1>
+      <p class="menu-subheader h1">Japanese rice bowls</p>
       <div class="menu-subsection">
       {donburi.map(item => (
         <div class="menu-item">
@@ -261,12 +576,13 @@ const flights = [
       ))}
       </div>
 
-      <h1>JAPANESE CURRY<br/><p>Served with rice and homemade radish pickles</p></h1>
+      <h1>JAPANESE CURRY</h1>
+      <p class="menu-subheader h1">Served with rice and homemade radish pickles</p>
       <div class="menu-subsection">
       {curry.map(item => (
         <div class="menu-item">
           <h3>{(item.title)}</h3>
-          {item.subtitle ? <p><em>{item.subtitle}</em></p> : ''}
+          {item.subtitle ? <p class="menu-subtitle"><em>{item.subtitle}</em></p> : ''}
           <p class="menu-item-price">{item.price}</p>
           <p class="menu-item-desc">{item.desc}</p>
         </div>
@@ -274,6 +590,7 @@ const flights = [
       </div>
     </div>
   </section>
+
   <section id="drinks" class="menu-section inactive">
     <div class="menu-content">
       <h1>SAKE CREATIONS</h1>
@@ -309,18 +626,182 @@ const flights = [
         <div class="menu-subsection">
           <h2>JUNMAI SAKE</h2>
           <p class='menu-subheader'>Pure rice sake</p>
-     
-          {[].map(item => (
+          <SakeSubHeader />
+          {junmai.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>JUNMAI GINJYO SAKE</h2>
+          <p class='menu-subheader'>Refined pure rice sake</p>
+          <SakeSubHeader />
+          {ginjyo.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>JUNMAI DAI-GINJYO SAKE</h2>
+          <p class='menu-subheader'>Very refined pure rice sake</p>
+          <SakeSubHeader />
+          {daiginjyo.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>HONJOZO</h2>
+          <p class='menu-subheader'>Distiller's Sake</p>
+          <SakeSubHeader />
+          {honjozo.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>NIGORI</h2>
+          <p class='menu-subheader'>Unfiltered Sake</p>
+          <SakeSubHeader />
+          {nigori.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>FRUIT SAKE</h2>
+          <p class='menu-subheader'>Fruit-infused Sake</p>
+          <SakeSubHeader />
+          {fruitSake.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>SPARKLING SAKE</h2>
+          {sparkling.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>HOT SAKE</h2>
+          {hotSake.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <h1>WINE</h1>
+        <div class="menu-subsection">
+          <h2>RED</h2>
+          {redWine.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>WHITE</h2>
+          {whiteWine.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>{`ROS${capitalE}`}</h2>
+          {rose.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <h1>BEER</h1>
+        <div class="menu-subsection">
+          <h2>ON TAP</h2>
+          {beer.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-subtitle"><em>{item.subtitle}</em></p>
+              <p class="menu-item-price">{item.price}</p>
+            </div>
+          ))}
+        </div>
+
+        <h1>SOFT DRINKS</h1>
+        <div class="menu-subsection">
+          <h2>Japanese Sparkling Juice</h2>
+          {juice.map(item => (
             <div class="menu-item">
               <h3>{(item.title)}</h3>
               <p class="menu-item-price">{item.price}</p>
               <p class="menu-item-desc">{item.desc}</p>
             </div>
           ))}
-
         </div>
-  
-
+        <div class="menu-subsection">
+          <h2>FRESH BREWED TEA</h2>
+          {tea.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div class="menu-subsection">
+          <h2>SPARKLING WATER</h2>
+          {water.map(item => (
+            <div class="menu-item">
+              <h3>{(item.title)}</h3>
+              <p class="menu-item-price">{item.price}</p>
+              <p class="menu-item-desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
     </div>
   </section>
 </div>

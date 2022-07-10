@@ -61,11 +61,11 @@ main {
   margin-bottom: 1em;
 }
 
-.menu-subheader, .menu-item-desc, .menu-item-price, .menu-item h3, .menu-section h2, .menu-section h1 {
+.menu-item-desc, .menu-item-price, .menu-subtitle, .menu-subheader, .menu-item h3, .menu-section h2, .menu-section h1 {
   text-align: center;
 }
 
-.section-description, .menu-subheader, .menu-item-desc, .menu-item-price, .menu-item h3 {
+.sake-label, .sake-slash, .menu-item-desc, .menu-item-price, .menu-subtitle, .menu-subheader, .menu-item h3, .section-description {
   font-family: "IM Fell Great Primer", serif;
   font-size: 1.6rem;
 }
@@ -74,6 +74,9 @@ main {
   font-weight: 700;
   margin-top: -1em;
   margin-bottom: 2rem;
+}
+.h1.menu-subheader {
+  margin-top: -2em;
 }
 
 .page.bottom.right:hover > span.hover-effect, .page.bottom.left:hover > span.hover-effect, .page.top.right:hover > span.hover-effect, .page.top.left:hover > span.hover-effect {
@@ -164,11 +167,13 @@ main.of-hidden {
 
 #menu {
   position: absolute;
+  height: auto;
   left: 0;
   top: max(20rem, 40vh);
   left: 5%;
   gap: 4rem;
   width: 90%;
+  overflow: hidden;
 }
 
 #menu.hidden {
@@ -180,8 +185,29 @@ main.of-hidden {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.menu-section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-section.inactive {
   opacity: 0;
   transform: translateY(5rem);
+}
+
+.menu-content {
+  border: 0.2rem solid #222;
+  padding: calc(max(2.4rem, 5vw) - 0.2rem) calc(max(2.4rem, 5vw) - 0.2rem);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.section-description {
+  margin-bottom: 3.2rem;
 }
 
 .menu-subsection {
@@ -207,26 +233,8 @@ main.of-hidden {
   text-transform: uppercase;
 }
 
-.menu-section.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.menu-content {
-  border: 0.2rem solid #222;
-  padding: calc(max(2.4rem, 5vw) - 0.2rem) calc(max(2.4rem, 5vw) - 0.2rem);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 5%;
-}
-
 .menu-item-price {
-  margin-bottom: 0.25em;
-}
-
-.section-description {
-  margin-bottom: 3.2rem;
+  margin-bottom: 0.5em;
 }
 
 .close {
@@ -244,6 +252,21 @@ main.of-hidden {
 
 .close.hidden {
   opacity: 0;
+}
+
+.sake-subheader {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0 auto 2rem;
+  gap: 2ch;
+  max-width: 23rem;
+}
+
+.sake-column {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
 * {

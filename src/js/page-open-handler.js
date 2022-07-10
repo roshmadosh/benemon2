@@ -12,11 +12,34 @@ const menuOptions = Array.from(menuOptionsContainer.children);
 const menuOptionLabels = menuOptions.map(option => option.children[0]);
 
 // the container for the menu itself
-const menu = document.querySelector('#menu');
+const menu = document.getElementById('menu');
 const menuSections = Array.from(document.querySelectorAll('.menu-section'));
 
 const logo = document.querySelector('.logo');
 const closeBtn = document.querySelector('.close');
+
+// default menu section
+let activeSection = menuSections[0];
+let currentMenuIndex = 0;
+
+// --- [INIT] --- //
+resizeViewportHeight(menuSections[0].offsetHeight);
+
+// detect orientation changes on menu page
+let previousOrientation = window.orientation;
+let checkOrientation = function(){
+  if(window.orientation !== previousOrientation){
+      previousOrientation = window.orientation;
+  }
+  // activeSection is always set to a section instance from INIT, i.e. it has the initial orientation dimensions
+  if(window.orientation == 0) {
+    resizeViewportHeight(activeSection.offsetHeight);
+  }
+  // currentMenuIndex will have the index of the active menu section. Reobtain menu sections and change VH to new section height.
+  if(window.orientation == 90) {
+    resizeViewportHeight(document.getElementsByClassName('menu-section')[currentMenuIndex].offsetHeight);
+  }
+};
 
 
 // --- [Event Listeners] --- //
@@ -29,6 +52,9 @@ menuOptions.forEach((option, index) => {
 });
 
 closeBtn.addEventListener('click', closeClickHandler);
+
+window.addEventListener("resize", checkOrientation, false);
+window.addEventListener("orientationchange", checkOrientation, false);
 
 // --- [Event Handlers] --- //
 function pageClickHandler(activeIndex) {
@@ -64,10 +90,19 @@ function pageClickHandler(activeIndex) {
 }
 
 function optionClickHandler(activeOption, activeIndex) {
+  currentMenuIndex = activeIndex;
+  activeSection = menuSections[activeIndex];
+  const inactiveSections = menuSections.filter(section => section !== activeSection);
+  
   removeClassFromAll(menuOptionLabels, 'active');
-  removeClassFromAll(menuSections, 'active');
-  addClass(menuSections[activeIndex], 'active');
   addClass(activeOption, 'active');
+
+  removeClassFromAll(menuSections, 'active');
+  removeClassFromAll(menuSections, 'inactive');
+  addClassToAll(inactiveSections, 'inactive');
+  addClass(activeSection, 'active');
+
+  resizeViewportHeight(activeSection.offsetHeight);
 }
 
 function closeClickHandler() {
@@ -197,4 +232,8 @@ function removeClassFromAll(array ,className) {
   array.forEach(item => {
     removeClass(item, className);
   });
+}
+
+function resizeViewportHeight(sectionOffsetHeight) {
+  menu.style.height = `${sectionOffsetHeight}px`;
 }
