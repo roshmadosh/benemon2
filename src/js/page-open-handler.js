@@ -18,29 +18,10 @@ const menuSections = Array.from(document.querySelectorAll('.menu-section'));
 const logo = document.querySelector('.logo');
 const closeBtn = document.querySelector('.close');
 
+let activePage;
 // default menu section
 let activeSection = menuSections[0];
 let currentMenuIndex = 0;
-
-// --- [INIT] --- //
-resizeViewportHeight(menuSections[0].offsetHeight);
-
-// detect orientation changes on menu page
-let previousOrientation = window.orientation;
-let checkOrientation = function(){
-  if(window.orientation !== previousOrientation){
-      previousOrientation = window.orientation;
-  }
-  // activeSection is always set to a section instance from INIT, i.e. it has the initial orientation dimensions
-  if(window.orientation == 0) {
-    resizeViewportHeight(activeSection.offsetHeight);
-  }
-  // currentMenuIndex will have the index of the active menu section. Reobtain menu sections and change VH to new section height.
-  if(window.orientation == 90) {
-    resizeViewportHeight(document.getElementsByClassName('menu-section')[currentMenuIndex].offsetHeight);
-  }
-};
-
 
 // --- [Event Listeners] --- //
 pageLabels.forEach((label, index) => {
@@ -53,12 +34,9 @@ menuOptions.forEach((option, index) => {
 
 closeBtn.addEventListener('click', closeClickHandler);
 
-window.addEventListener("resize", checkOrientation, false);
-window.addEventListener("orientationchange", checkOrientation, false);
-
 // --- [Event Handlers] --- //
 function pageClickHandler(activeIndex) {
-  const activePage = pages[activeIndex];
+  activePage = pages[activeIndex];
   const inactives = pages.filter((page, index) => index !== activeIndex);
 
   switch (activeIndex) {
@@ -72,6 +50,8 @@ function pageClickHandler(activeIndex) {
       addClass(inactives[2], ['fade-down', 'inactive']);
       addClass(inactives[1], ['fade-left', 'fade-down', 'inactive']);
 
+      // menuOptions add/remove 'hidden' not part of performSideEffects bc it needs to
+      menuOptionsContainer.classList.remove('hidden');
       performSideEffects('menu', true);
       break;
     case 2:
@@ -102,7 +82,6 @@ function optionClickHandler(activeOption, activeIndex) {
   addClassToAll(inactiveSections, 'inactive');
   addClass(activeSection, 'active');
 
-  resizeViewportHeight(activeSection.offsetHeight);
 }
 
 function closeClickHandler() {
@@ -111,18 +90,23 @@ function closeClickHandler() {
     removeClass(page, classes);
   });
 
-  performSideEffects('menu', false);
+
+  if (activePage.id === 'menu-btn') {
+    menuOptionsContainer.addEventListener('animationend', () => {
+      menuOptionsContainer.removeAttribute('closing');
+      menuOptionsContainer.classList.add('hidden');
+      activePage = undefined;
+    }, {once: true});   
+    performSideEffects('menu', false);
+    menuOptionsContainer.setAttribute('closing', '');
+  }
+
 }
 
 // --- [Side Effects] --- //
 
 // define
 const menuSideEffects = [
-  {
-    target: menuOptionsContainer,
-    className: 'hidden',
-    addOnOpen: false,
-  },
   {
     target: main,
     className: 'of-hidden',
@@ -133,7 +117,6 @@ const menuSideEffects = [
     target: menu,
     className: 'hidden',
     addOnOpen: false,
-    timeout: 500
   },
 ]
 

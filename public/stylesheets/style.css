@@ -4,6 +4,15 @@ main {
   margin: 0 auto;
 }
 
+.menu-item-desc, .menu-item-price, .menu-subtitle, .menu-subheader, .menu-item h3, .section-description {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.menu-section h2, .menu-section h1 {
+  text-align: center;
+}
+
 .page.top.right {
   position: absolute;
   top: 0;
@@ -61,10 +70,6 @@ main {
   margin-bottom: 1em;
 }
 
-.menu-item-desc, .menu-item-price, .menu-subtitle, .menu-subheader, .menu-item h3, .menu-section h2, .menu-section h1 {
-  text-align: center;
-}
-
 .sake-label, .sake-slash, .menu-item-desc, .menu-item-price, .menu-subtitle, .menu-subheader, .menu-item h3, .section-description {
   font-family: "IM Fell Great Primer", serif;
   font-size: 1.6rem;
@@ -93,8 +98,7 @@ main {
   pointer-events: none;
 }
 
-#menu.hidden, #menu-options.hidden, .page.bottom.right.inactive, .page.bottom.left.inactive, .page.top.right.inactive, .page.top.left.inactive {
-  pointer-events: none;
+#menu.hidden, .page.bottom.right.inactive, .page.bottom.left.inactive, .page.top.right.inactive, .page.top.left.inactive {
   opacity: 0;
 }
 
@@ -161,8 +165,29 @@ main.of-hidden {
   top: 30vh;
 }
 
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-out-right {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+#menu-options[closing] {
+  animation: slide-out-right 0.25s forwards;
+}
+
 #menu-options.hidden {
-  transform: translateX(400%);
+  display: none;
 }
 
 #menu {
@@ -173,7 +198,6 @@ main.of-hidden {
   left: 5%;
   gap: 4rem;
   width: 90%;
-  overflow: hidden;
 }
 
 #menu.hidden {
@@ -188,15 +212,23 @@ main.of-hidden {
 }
 
 .menu-section.active {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fade-in 0.75s forwards;
 }
 
 .menu-section.inactive {
-  opacity: 0;
-  transform: translateY(5rem);
+  display: none;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .menu-content {
   border: 0.2rem solid #222;
   padding: calc(max(2.4rem, 5vw) - 0.2rem) calc(max(2.4rem, 5vw) - 0.2rem);
@@ -297,6 +329,10 @@ ul, ol {
 
 img {
   width: 100%;
+}
+
+p {
+  max-width: 40ch;
 }
 
 /*# sourceMappingURL=style.css.map */

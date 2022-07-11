@@ -7,9 +7,30 @@
   position: relative;
   top: calc(25vh + 5vh);
 }
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+#menu-options[closing] {
+  animation: slide-out-right 0.25s forwards;
+}
 #menu-options.hidden {
-  @extend %hidden;
-  transform: translateX(400%);
+  display: none;
 }
 
 .menu-option {
@@ -28,7 +49,7 @@
   left: 5%;
   gap: 4rem;
   width: 90%;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 #menu.hidden {
@@ -43,13 +64,23 @@
   left: 0;
   top: 0;
 }
+
 .menu-section.active {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fade-in .75s forwards;
 }
 .menu-section.inactive {
-  opacity: 0;
-  transform: translateY(5rem);
+  display: none;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // --- [MENU CONTENT WRAPPER] --- //
@@ -65,6 +96,7 @@
 // --- [MENU CONTENT] --- //
 .section-description {
   @extend %menu-paragraph;
+  @extend %inline-center;
   margin-bottom: $fs-menu-h1; 
 }
 
@@ -78,19 +110,19 @@
 
 .menu-section h1 {
   @extend %menu-header;
-  @extend %text-centered;
+  @extend %header-center;
   font-size: $fs-menu-h1;
 }
 .menu-section h2 {
   @extend %menu-header;
-  @extend %text-centered;
+  @extend %header-center;
   font-size: $fs-menu-h2;
   text-decoration: underline;
 }
 
 .menu-item h3 {
   @extend %menu-paragraph;
-  @extend %text-centered;
+  @extend %inline-center;
   font-size: $fs-menu-p;
   font-weight: 300;
   text-transform: uppercase;
@@ -99,20 +131,20 @@
 .menu-subheader {
   @extend %subheader;
   @extend %menu-paragraph;
-  @extend %text-centered; 
+  @extend %inline-center; 
 }
 
 .menu-subtitle {
   @extend %menu-paragraph;
-  @extend %text-centered; 
+  @extend %inline-center; 
 }
 .menu-item-price {
   @extend %menu-paragraph;
-  @extend %text-centered; 
+  @extend %inline-center; 
   margin-bottom: .5em;
 }
 .menu-item-desc {
   @extend %menu-paragraph;
-  @extend %text-centered; 
+  @extend %inline-center; 
 }
 
