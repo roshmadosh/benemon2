@@ -6,31 +6,18 @@
   grid-template-columns: repeat(3, 1fr);
   position: relative;
   top: calc(25vh + 5vh);
+  opacity: 0;
 }
 
-@keyframes slide-in-right {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+#menu-options.active {
+  animation: fade_in .4s ease-in forwards;
 }
 
-@keyframes slide-out-right {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
 #menu-options[closing] {
-  animation: slide-out-right 0.25s forwards;
+  animation: fade_out 0.25s ease-in forwards;
 }
 #menu-options.hidden {
-  display: none;
+  @extend %hidden;
 }
 
 .menu-option {
@@ -44,17 +31,14 @@
 #menu {
   position: absolute;
   height: auto;
-  left: 0;
   top: max(20rem, 40vh);
   left: 5%;
   gap: 4rem;
   width: 90%;
-  // overflow: hidden;
 }
 
 #menu.hidden {
   @extend %hidden;
-  transform: translateY(5rem);
 }
 
 // --- [MENU SECTION] --- //
@@ -63,25 +47,21 @@
   position: absolute;
   left: 0;
   top: 0;
+  opacity: 0;
+}
+
+.menu-section.active.initial-open {
+  animation: fade_in .4s ease-in forwards;
+  animation-delay: .25s;
 }
 
 .menu-section.active {
-  animation: fade-in .75s forwards;
+  animation: fade_in .4s ease-in forwards;
 }
 .menu-section.inactive {
-  display: none;
+  @extend %hidden;
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(5rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 // --- [MENU CONTENT WRAPPER] --- //
 .menu-content {

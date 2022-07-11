@@ -1,0 +1,50 @@
+@keyframes fade_in {
+  0% {
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade_out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes label_fade_out_up {
+  to { opacity: 0; transform: translate(-50%, -300%); }
+}
+@keyframes label_fade_out_down {
+  to { opacity: 0; transform: translate(-50%, 200%); }
+}
+@keyframes label_fade_out_left {
+  to { opacity: 0; transform: translate(-300%, -50%); }
+}
+@keyframes label_fade_out_right {
+  to { opacity: 0; transform: translate(200%, -50%); }
+}
+@keyframes label_fade_out_up_left {
+  to { opacity: 0; transform: translate(-300%, -300%); }
+}
+@keyframes label_fade_out_up_right {
+  to { opacity: 0; transform: translate(200%, -300%); }
+}
+@keyframes label_fade_out_down_left {
+  to { opacity: 0; transform: translate(-300%, 200%); }
+}
+@keyframes label_fade_out_down_right {
+  to { opacity: 0; transform: translate(200%, 200%); }
+}
+
+
+@keyframes label_fade_in_left {
+  from { opacity: 0; transform: translate(-50%, 0); }
+  to { opacity: 1; transform: translate(0); } 
+}

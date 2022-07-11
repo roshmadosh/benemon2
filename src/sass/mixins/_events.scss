@@ -10,16 +10,15 @@
   height: 100%;
   > span {
     transform: translate(-50%, -50%);
-    pointer-events: none;
   }
 }
 
 %hidden {
-  opacity: 0;
+  display: none;
 }
 
 %overflow-hidden {
   &.of-hidden {
-    overflow: hidden;
+    overflow-y: scroll; /* Show vertical scrollbar */
   }
 }

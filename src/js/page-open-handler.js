@@ -39,30 +39,38 @@ function pageClickHandler(activeIndex) {
   activePage = pages[activeIndex];
   const inactives = pages.filter((page, index) => index !== activeIndex);
 
+  inactives.forEach(inactive => {
+    inactive.addEventListener('animationend', () => {
+      addClass(inactive, 'inactive');
+    }, {once: true});
+  })
+
   switch (activeIndex) {
     case 0:
-      addClass(inactives[0], ['fade-right', 'inactive']);
-      addClass(inactives[1], ['fade-down', 'inactive']);
-      addClass(inactives[2], ['fade-right', 'fade-down', 'inactive']);
+      addClass(inactives[0], ['fade-right']);
+      addClass(inactives[1], ['fade-down']);
+      addClass(inactives[2], ['fade-down-and-right']);
       break;
     case 1:
-      addClass(inactives[0], ['fade-left', 'inactive']);
-      addClass(inactives[2], ['fade-down', 'inactive']);
-      addClass(inactives[1], ['fade-left', 'fade-down', 'inactive']);
+      addClass(inactives[0], ['fade-left']);
+      addClass(inactives[2], ['fade-down']);
+      addClass(inactives[1], ['fade-down-and-left']);
 
-      // menuOptions add/remove 'hidden' not part of performSideEffects bc it needs to
-      menuOptionsContainer.classList.remove('hidden');
+      removeClass(menuOptionsContainer, 'hidden');
+      addClass(menuOptionsContainer, 'active');
+
       performSideEffects('menu', true);
+ 
       break;
     case 2:
-      addClass(inactives[0], ['fade-up', 'inactive']);
-      addClass(inactives[2], ['fade-right', 'inactive']);
-      addClass(inactives[1], ['fade-up', 'fade-right', 'inactive']);
+      addClass(inactives[0], ['fade-up']);
+      addClass(inactives[2], ['fade-right']);
+      addClass(inactives[1], ['fade-up-and-right']);
       break;
     case 3:
-      addClass(inactives[1], ['fade-up', 'inactive']);
-      addClass(inactives[2], ['fade-left', 'inactive']);
-      addClass(inactives[0], ['fade-up', 'fade-left', 'inactive']);
+      addClass(inactives[1], ['fade-up']);
+      addClass(inactives[2], ['fade-left']);
+      addClass(inactives[0], ['fade-up-and-left']);
       break;
   }
 
@@ -70,6 +78,7 @@ function pageClickHandler(activeIndex) {
 }
 
 function optionClickHandler(activeOption, activeIndex) {
+  menuSections[0].classList.remove('initial-open');
   currentMenuIndex = activeIndex;
   activeSection = menuSections[activeIndex];
   const inactiveSections = menuSections.filter(section => section !== activeSection);
@@ -85,19 +94,54 @@ function optionClickHandler(activeOption, activeIndex) {
 }
 
 function closeClickHandler() {
-  const classes = ['active', 'inactive', 'fade-up', 'fade-down', 'fade-left', 'fade-right'];
+  // reset landing page
+  const classes = [
+    'active', 
+    'inactive', 
+    'fade-up', 
+    'fade-down', 
+    'fade-left', 
+    'fade-right',
+    'fade-up-and-left',
+    'fade-up-and-right',
+    'fade-down-and-left',
+    'fade-down-and-right'
+  ];
+  
   pages.forEach(page => {
     removeClass(page, classes);
+    page.setAttribute('return-from', `${activePage.id}`)
   });
 
+  closeBtn.addEventListener('animationend', () => {
+    closeBtn.removeAttribute('closing', '');
+    performSideEffects('menu', false);
+  }, {once: true})
 
   if (activePage.id === 'menu-btn') {
+    // wait to add 'hidden' class (display: none) until animation from 'closing" attr finished
     menuOptionsContainer.addEventListener('animationend', () => {
       menuOptionsContainer.removeAttribute('closing');
-      menuOptionsContainer.classList.add('hidden');
+      removeClass(menuOptionsContainer, 'active');
+      addClass(menuOptionsContainer, 'hidden');
+
+      // reset menu to default
+      removeClassFromAll(menuSections.slice(1), 'active');
+      addClassToAll(menuSections.slice(1), 'inactive');
+
+      removeClass(menuSections[0], 'inactive');
+      addClass(menuSections[0], 'active');
+      addClass(menuSections[0], 'initial-open');
+
+      removeClassFromAll(menuOptionLabels, 'active');
+      addClass(menuOptionLabels[0], 'active');
+
       activePage = undefined;
+
     }, {once: true});   
-    performSideEffects('menu', false);
+
+    
+    closeBtn.setAttribute('closing', '');
     menuOptionsContainer.setAttribute('closing', '');
   }
 
@@ -124,6 +168,11 @@ const layoutSideEffects = [
   {
     target: logo,
     className: 'page-view',
+    addOnOpen: true,
+  },
+  {
+    target: closeBtn,
+    className: 'active',
     addOnOpen: true,
   },
   {

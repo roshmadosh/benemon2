@@ -30,6 +30,11 @@
 .page {
   @extend %page-btn;
 }
+.page.top.left {
+  &[return-from="menu-btn"] {
+    animation: label_fade_in_left .4s forwards;
+  }
+}
 .page.top.right {
   @extend %top-right;
 }
@@ -44,45 +49,36 @@
 // top-left
 .page.top.left.active {
   @extend %page-active;
+
 }
 .page.top.left.inactive {
   @extend %hidden;
 }
 // top-right
 .page.top.right.active {
- @extend %page-active;
+  @extend %page-active;
 }
 .page.top.right.inactive {
   @extend %hidden;
  }
 //bottom-left
 .page.bottom.left.active {
- @extend %page-active;
+  @extend %page-active;
 }
 .page.bottom.left.inactive {
   @extend %hidden;
  }
 //bottom-right
 .page.bottom.right.active {
- @extend %page-active;
+  @extend %page-active;
+  animation: label_fade_in
 }
 .page.bottom.right.inactive {
   @extend %hidden;
  }
 
 // --- [PAGE: HOVER] --- //
-// .page.top.left:hover {
-//   background: rgb(203, 108, 108, 0.8);
-// }
-// .page.top.right:hover {
-//   background: rgb(203, 108, 108, 0.8);
-// }
-// .page.bottom.left:hover {
-//   background: rgb(203, 108, 108, 0.8);
-// }
-// .page.bottom.right:hover {
-//   background: rgb(203, 108, 108, 0.8);
-// }
+
 .page.top.left:hover > span {
   @extend %hover-color;
 }
@@ -99,41 +95,41 @@
 // --- [PAGE-LABEL TRANSITIONS] --- //
 .fade-up {
   > span {
-    transform: translate(-50%, -300%);
+    animation: label_fade_out_up $animation-duration forwards;
   }
 }
 .fade-down {
   > span {
-    transform: translate(-50%, 200%);
+    animation: label_fade_out_down $animation-duration forwards;
   }
 }
 .fade-left {
   > span {
-    transform: translate(-300%, -50%);
+    animation: label_fade_out_left $animation-duration forwards;
   }
 }
 .fade-right {
   > span {
-    transform: translate(200%, -50%);
+    animation: label_fade_out_right $animation-duration forwards;
   }
 }
-.fade-up.fade-left {
+.fade-up-and-left {
   > span {
-    transform: translate(-300%, -300%) !important;
+    animation: label_fade_out_up_left $animation-duration forwards;
   }
 }
-.fade-up.fade-right {
+.fade-up-and-right {
   > span {
-    transform: translate(200%, -300%) !important;
+    animation: label_fade_out_up_right $animation-duration forwards;
   }
 }
-.fade-down.fade-left {
+.fade-down-and-left {
   > span {
-    transform: translate(-300%, 200%) !important;
+    animation: label_fade_out_down_left $animation-duration forwards;
   }
 }
-.fade-down.fade-right {
+.fade-down-and-right {
   > span {
-    transform: translate(200%, 200%) !important;
+    animation: label_fade_out_down_right $animation-duration forwards;
   }
 }
