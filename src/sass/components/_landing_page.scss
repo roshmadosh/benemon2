@@ -31,6 +31,8 @@
   @extend %page-btn;
 }
 .page.top.left {
+  @extend %top-left;
+  background: $color-gray;
   &[return-from="menu-btn"] {
     animation: label_fade_in_left .4s forwards;
   }
@@ -42,6 +44,7 @@
   @extend %bottom-left;
 }
 .page.bottom.right {
+  background: $color-gray;
   @extend %bottom-right;
 }
 
@@ -49,7 +52,6 @@
 // top-left
 .page.top.left.active {
   @extend %page-active;
-
 }
 .page.top.left.inactive {
   @extend %hidden;
@@ -71,7 +73,6 @@
 //bottom-right
 .page.bottom.right.active {
   @extend %page-active;
-  animation: label_fade_in
 }
 .page.bottom.right.inactive {
   @extend %hidden;
@@ -94,41 +95,49 @@
 
 // --- [PAGE-LABEL TRANSITIONS] --- //
 .fade-up {
+  opacity: 0;
   > span {
     animation: label_fade_out_up $animation-duration forwards;
   }
 }
 .fade-down {
+  opacity: 0;
   > span {
     animation: label_fade_out_down $animation-duration forwards;
   }
 }
 .fade-left {
+  opacity: 0;
   > span {
     animation: label_fade_out_left $animation-duration forwards;
   }
 }
 .fade-right {
+  opacity: 0;
   > span {
     animation: label_fade_out_right $animation-duration forwards;
   }
 }
 .fade-up-and-left {
+  opacity: 0;
   > span {
     animation: label_fade_out_up_left $animation-duration forwards;
   }
 }
 .fade-up-and-right {
+  opacity: 0;
   > span {
     animation: label_fade_out_up_right $animation-duration forwards;
   }
 }
 .fade-down-and-left {
+  opacity: 0;
   > span {
     animation: label_fade_out_down_left $animation-duration forwards;
   }
 }
 .fade-down-and-right {
+  opacity: 0;
   > span {
     animation: label_fade_out_down_right $animation-duration forwards;
   }

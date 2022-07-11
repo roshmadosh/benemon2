@@ -56,9 +56,6 @@ function pageClickHandler(activeIndex) {
       addClass(inactives[2], ['fade-down']);
       addClass(inactives[1], ['fade-down-and-left']);
 
-      removeClass(menuOptionsContainer, 'hidden');
-      addClass(menuOptionsContainer, 'active');
-
       performSideEffects('menu', true);
  
       break;
@@ -109,8 +106,11 @@ function closeClickHandler() {
   ];
   
   pages.forEach(page => {
+    page.addEventListener('animationend', () => {
+      page.removeAttribute('return-from');
+    })
+    page.setAttribute('return-from', `${activePage.id}`);
     removeClass(page, classes);
-    page.setAttribute('return-from', `${activePage.id}`)
   });
 
   closeBtn.addEventListener('animationend', () => {
@@ -149,18 +149,28 @@ function closeClickHandler() {
 
 // --- [Side Effects] --- //
 
+// CSS Variable
+const defaultTransitionDuration = 400;
+
 // define
 const menuSideEffects = [
   {
-    target: main,
-    className: 'of-hidden',
+    target: menuOptionsContainer,
+    className: 'hidden',
     addOnOpen: false,
-    timeout: 500
+    timeout: defaultTransitionDuration - 100
+  },
+  {
+    target: menuOptionsContainer,
+    className: 'active',
+    addOnOpen: true,
+    timeout: defaultTransitionDuration - 100
   },
   {
     target: menu,
     className: 'hidden',
     addOnOpen: false,
+    timeout: defaultTransitionDuration - 100
   },
 ]
 

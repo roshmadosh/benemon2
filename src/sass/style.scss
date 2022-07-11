@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all .4s;
+  transition: all $transition-duration-default;
 }
 
 html {
@@ -26,8 +26,8 @@ main {
   position: relative;
   max-width: $viewport-max;
   height: 100vh;
+  padding-left: calc(100vw - 100%);
   @extend %x-center;
-  @extend %overflow-hidden;
 }
 
 ul, ol {

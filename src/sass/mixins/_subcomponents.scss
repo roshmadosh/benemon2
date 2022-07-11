@@ -3,6 +3,7 @@
   height: 50%;
   position: relative;
   text-align: center;
+  opacity: 1;
 }
 
 %page-label {
@@ -14,7 +15,6 @@
   z-index:3;
   position: absolute;
   top: 25vh;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 
